@@ -1,2 +1,0 @@
-com/example/locatioinpermissionapp/BuildConfig.java
- com.example.locatioinpermissionapp.BuildConfig
