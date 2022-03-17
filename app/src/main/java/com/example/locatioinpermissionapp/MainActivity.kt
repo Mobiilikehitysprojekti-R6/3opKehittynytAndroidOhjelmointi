@@ -2,7 +2,9 @@ package com.example.locatioinpermissionapp
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -59,7 +61,16 @@ class MainActivity : AppCompatActivity() {
         }
         task.addOnSuccessListener {
             if(it != null) {
-                Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
+
+                val mapIntent: Intent = Uri.parse(
+                    "geo:${it.latitude},${it.longitude}?z=14"
+                ).let { location ->
+                    // Or map point based on latitude/longitude
+                    val location2: Uri = Uri.parse("geo:${it.latitude},${it.longitude}?z=14") // z param is zoom level
+                    Intent(Intent.ACTION_VIEW, location2)
+                }
+                startActivity(mapIntent)
+               // Toast.makeText(applicationContext, "${it.latitude} ${it.longitude}", Toast.LENGTH_SHORT).show()
             }
         }
     }
