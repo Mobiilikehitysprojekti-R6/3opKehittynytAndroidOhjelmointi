@@ -1,4 +1,4 @@
-package com.example.locatioinpermissionapp
+package com.example.location_getter_app
 
 import org.junit.Test
 
